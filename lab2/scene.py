@@ -3,6 +3,7 @@ from PySide6.QtGui import QPainter, QPen, QBrush, QColor, QPolygonF, QLinearGrad
 from PySide6.QtCore import Qt, QPoint, QPointF
 from letters import Letter3D, Vector3D, Matrix4x4, ShadingMode
 
+
 class SceneWidget(QWidget):
     def __init__(self):
         super().__init__()
@@ -60,7 +61,7 @@ class SceneWidget(QWidget):
         n = len(vertices)
         for i in range(n):
             curr_v, curr_n, curr_o = vertices[i], normals[i], orig_vertices[i]
-            prev_v, prev_n, prev_o = vertices[i-1], normals[i-1], orig_vertices[i-1]
+            prev_v, prev_n, prev_o = vertices[i - 1], normals[i - 1], orig_vertices[i - 1]
             curr_in = curr_v.z > 0
             prev_in = prev_v.z > 0
             if curr_in:
@@ -164,7 +165,8 @@ class SceneWidget(QWidget):
                         px = v.x * factor * self.base_scale * (1 / aspect if aspect > 1 else 1) + width / 2
                         py = v.y * factor * self.base_scale * (1 if aspect > 1 else aspect) + height / 2
                         screen_points.append(QPointF(px, py))
-                        intensity = self.compute_phong_lighting(face_normals[i], original_vertices[i], inverse_transform)
+                        intensity = self.compute_phong_lighting(face_normals[i], original_vertices[i],
+                                                                inverse_transform)
                         intensities.append(intensity)
                     avg_depth = sum(v.z for v in face_vertices) / len(face_vertices)
                     self.cached_faces.append((avg_depth, face, screen_points, intensities))
@@ -245,12 +247,12 @@ class SceneWidget(QWidget):
             radial_gradient.setColorAt(1, QColor(255, 255, 0, 0))
             painter.setBrush(QBrush(radial_gradient))
             painter.drawEllipse(screen_pos, 10, 10)
-            
+
             # Рисуем контур
             painter.setPen(QPen(QColor(255, 255, 0), 1))
             painter.setBrush(Qt.NoBrush)
             painter.drawEllipse(screen_pos, 5, 5)
-            
+
             # Подпись
             painter.setPen(QPen(QColor(255, 255, 0), 1))
             painter.drawText(screen_pos + QPoint(15, 5), "Источник света")

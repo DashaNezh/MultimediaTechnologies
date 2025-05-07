@@ -2,15 +2,12 @@ import math
 from PySide6.QtGui import QColor
 from enum import Enum
 
+
 class ShadingMode(Enum):
     MONOTONE = "Монотонное"
     GOURAUD = "Градиент Гуро"
     PHONG = "Градиент Фонга"
 
-class DisplayMode(Enum):
-    POINTS = "Точки"
-    WIREFRAME = "Каркас"
-    FILLED = "Заливка"
 
 class Vector3D:
     def __init__(self, x, y, z):
@@ -38,6 +35,7 @@ class Vector3D:
 
     def dot(self, other):
         return self.x * other.x + self.y * other.y + self.z * other.z
+
 
 class Matrix4x4:
     def __init__(self):
@@ -118,6 +116,7 @@ class Matrix4x4:
                 result.m[i][j] = self.m[j][i]
         return result
 
+
 class Face:
     def __init__(self, vertices, color):
         self.vertices = vertices
@@ -144,6 +143,7 @@ class Face:
         y = sum(v.y for v in self.vertices) / len(self.vertices)
         z = sum(v.z for v in self.vertices) / len(self.vertices)
         return Vector3D(x, y, z)
+
 
 class Letter3D:
     def __init__(self, height, width, depth, offset_x=0, letter_type='Д'):
@@ -257,11 +257,11 @@ class Letter3D:
         ]
 
         self.vertices = (
-            front_left_leg + back_left_leg + front_right_leg + back_right_leg +
-            front_crossbar + back_crossbar +
-            front_left_foot + back_left_foot + front_right_foot + back_right_foot
+                front_left_leg + back_left_leg + front_right_leg + back_right_leg +
+                front_crossbar + back_crossbar +
+                front_left_foot + back_left_foot + front_right_foot + back_right_foot
         )
-        main_color = QColor(255, 105, 180)   # Один цвет для всех граней
+        main_color = QColor(255, 105, 180)  # Один цвет для всех граней
         side_color = main_color
         top_color = main_color
 
@@ -315,7 +315,7 @@ class Letter3D:
         ]
 
         self.vertices = front_left + back_left + front_right + back_right + front_bar + back_bar
-        main_color = QColor(255, 105, 180)   # Один цвет для всех граней
+        main_color = QColor(255, 105, 180)  # Один цвет для всех граней
         side_color = main_color
         top_color = main_color
 
@@ -334,12 +334,13 @@ class Letter3D:
         self.faces.append(Face([back_right[3], back_bar[2], front_bar[2], back_right[3]], main_color))
 
     def _create_faces_for_part(self, front_vertices, back_vertices):
-        main_color = QColor(255, 105, 180)   # Один цвет для всех граней
+        main_color = QColor(255, 105, 180)  # Один цвет для всех граней
         side_color = main_color
         top_color = main_color
 
         # Передняя и задняя грани
-        self.faces.append(Face([front_vertices[0], front_vertices[1], front_vertices[2], front_vertices[3]], main_color))
+        self.faces.append(
+            Face([front_vertices[0], front_vertices[1], front_vertices[2], front_vertices[3]], main_color))
         self.faces.append(Face([back_vertices[0], back_vertices[3], back_vertices[2], back_vertices[1]], main_color))
 
         # Боковые грани
@@ -385,4 +386,4 @@ class Letter3D:
         self.transform = rot * self.transform
 
     def set_scale(self, scale_factor):
-        self.scale = scale_factor 
+        self.scale = scale_factor

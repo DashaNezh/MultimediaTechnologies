@@ -1,9 +1,9 @@
 from PySide6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QSlider, QLabel, QPushButton, QScrollArea, QSizePolicy, QGroupBox, QTabWidget
 from PySide6.QtCore import Qt
 from scene import SceneWidget
-from letters import ShadingMode, DisplayMode, Vector3D, Matrix4x4
+from letters import ShadingMode, Vector3D, Matrix4x4
 import math
-from enum import Enum
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
