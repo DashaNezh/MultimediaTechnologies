@@ -26,34 +26,34 @@ class MainWindow(QMainWindow):
                 font-weight: bold;
             }
             QGroupBox::title {
-                color: #4a9eff;
+                color: #ff69b4;
                 subcontrol-origin: margin;
                 left: 10px;
                 padding: 0 3px;
             }
             QPushButton {
                 background-color: #3c3c3c;
-                border: 1px solid #4a9eff;
+                border: 1px solid #ff69b4;
                 border-radius: 4px;
                 padding: 5px;
                 min-width: 80px;
             }
             QPushButton:hover {
-                background-color: #4a9eff;
+                background-color: #ff69b4;
             }
             QPushButton:checked {
-                background-color: #4a9eff;
+                background-color: #ff69b4;
             }
             QSlider::groove:horizontal {
-                border: 1px solid #4a9eff;
+                border: 1px solid #ff69b4;
                 height: 8px;
                 background: #3c3c3c;
                 margin: 2px 0;
                 border-radius: 4px;
             }
             QSlider::handle:horizontal {
-                background: #4a9eff;
-                border: 1px solid #4a9eff;
+                background: #ff69b4;
+                border: 1px solid #ff69b4;
                 width: 18px;
                 margin: -2px 0;
                 border-radius: 9px;
@@ -92,10 +92,10 @@ class MainWindow(QMainWindow):
                 background: #3c3c3c;
                 color: #ffffff;
                 padding: 8px 12px;
-                border: 1px solid #4a9eff;
+                border: 1px solid #ff69b4;
             }
             QTabBar::tab:selected {
-                background: #4a9eff;
+                background: #ff69b4;
             }
         """)
         
